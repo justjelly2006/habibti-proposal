@@ -109,6 +109,16 @@ button:active {
   margin-top: 15px;
 }
 
+#musicArea {
+  display: none;
+  margin-top: 20px;
+}
+
+#musicArea audio {
+  width: 100%;
+  height: 45px;
+}
+
 @keyframes glow {
   to { text-shadow: 0 0 25px #ffdf70; }
 }
@@ -142,7 +152,7 @@ button:active {
 
 <div class="card">
 
-  <div class="tulip-row" aria-label="Tulips">🌷💛🌷</div>
+  <div class="tulip-row">🌷💛🌷</div>
 
   <div class="flower">🌷</div>
 
@@ -158,9 +168,7 @@ button:active {
       you became someone very special to me.
     </p>
 
-    <p>
-      So, there's something I want to ask you. 💛
-    </p>
+    <p>So, there's something I want to ask you. 💛</p>
 
     <h1>Will you be my sunshine? ☀️</h1>
 
@@ -177,9 +185,14 @@ button:active {
 
   <div id="result" aria-live="polite"></div>
 
-  <div class="tulip-row">🌷💗🌷</div>
+  <div id="musicArea">
+    <p>🎵 A little song for my habibti ❤️</p>
+    <audio id="loveSong" src="./love-songs.mp3" controls loop preload="auto">
+      Your browser does not support audio.
+    </audio>
+  </div>
 
-  <audio id="loveSong" src="./love-songs.mp3" preload="auto" loop controls></audio>
+  <div class="tulip-row">🌷💗🌷</div>
 
   <div class="music-note" id="musicStatus">
     💌 A little surprise awaits you...
@@ -196,7 +209,7 @@ function answerYes() {
 
   result.innerHTML = `
     <div style="font-size:60px">❤️🥹🌷</div>
-    <h1>You made my day!</h1>
+    <h1>You Made My Day!</h1>
     <div class="tulip-row">🌷🌷🌷</div>
     <p>
       If your answer is yes, then here's to
@@ -208,14 +221,16 @@ function answerYes() {
     <div class="tulip-row">🌷💛🌷</div>
   `;
 
+  const musicArea = document.getElementById("musicArea");
   const song = document.getElementById("loveSong");
   const status = document.getElementById("musicStatus");
 
+  musicArea.style.display = "block";
+
   song.play().then(() => {
-    status.textContent = "🎵 A song for my habibti ❤️";
+    status.textContent = "🎶 Playing a song for my habibti ❤️";
   }).catch(() => {
-    status.textContent =
-      "🎵 Add love-songs.mp3 to the repository to play our song.";
+    status.textContent = "🎵 Tap ▶️ to play our song, habibti ❤️";
   });
 
   celebrate();
