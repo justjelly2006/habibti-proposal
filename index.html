@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Little Question ❤️</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(145deg, #650813, #a71929, #4c0710);
+  color: #fff4d0;
+  font-family: Georgia, serif;
+  text-align: center;
+  overflow: hidden;
+}
+
+.card {
+  width: 90%;
+  max-width: 430px;
+  padding: 30px 22px;
+  border: 1px solid #ffdc72;
+  border-radius: 25px;
+  background: rgba(255, 220, 100, .08);
+  box-shadow: 0 0 35px #ffcf5530;
+  z-index: 2;
+}
+
+.flower {
+  font-size: 65px;
+  animation: glow 2s infinite alternate;
+}
+
+h1 {
+  color: #ffdf70;
+  font-size: 32px;
+}
+
+p {
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+button {
+  display: inline-block;
+  padding: 14px 23px;
+  margin: 8px 4px;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#yes {
+  background: #ffdf70;
+  color: #690b15;
+}
+
+#time {
+  background: transparent;
+  color: #fff4d0;
+  border: 1px solid #ffdf70;
+}
+
+button:active {
+  transform: scale(.96);
+}
+
+#result {
+  display: none;
+  animation: appear 1s ease;
+}
+
+.heart {
+  position: fixed;
+  bottom: -40px;
+  animation: float 6s linear forwards;
+  pointer-events: none;
+}
+
+@keyframes glow {
+  to { text-shadow: 0 0 25px #ffdf70; }
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  to {
+    transform: translateY(-110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+  <div class="flower">🌹</div>
+
+  <div id="question">
+    <p>A little question from my heart...</p>
+
+    <h1>Shakila, My Habibti ❤️</h1>
+
+    <p>
+      Somewhere between our conversations,
+      your cute laugh, and the way you make
+      ordinary moments special...
+      you became someone very special to me.
+    </p>
+
+    <p>
+      So, there's something I want to ask you. 💛
+    </p>
+
+    <h1>Will you be my sunshine? ☀️</h1>
+
+    <button id="yes" onclick="answerYes()">
+      YES ❤️
+    </button>
+
+    <button id="time" onclick="answerTime()">
+      I NEED TIME 💛
+    </button>
+  </div>
+
+  <div id="result"></div>
+
+</div>
+
+<script>
+function answerYes() {
+  document.getElementById("question").style.display = "none";
+
+  const result = document.getElementById("result");
+  result.style.display = "block";
+
+  result.innerHTML = `
+    <div style="font-size:65px">❤️🥹🌹</div>
+    <h1>You made my day!</h1>
+    <p>
+      If your answer is yes, then here's to
+      more smiles, silly moments, and beautiful
+      memories together. 💛
+    </p>
+    <p>You're my favourite sunshine, Shakila. ☀️</p>
+    <p>Sending you the biggest virtual hug! 🫂</p>
+  `;
+
+  celebrate();
+}
+
+function answerTime() {
+  document.getElementById("question").style.display = "none";
+
+  const result = document.getElementById("result");
+  result.style.display = "block";
+
+  result.innerHTML = `
+    <div style="font-size:60px">💛🌻</div>
+    <h1>Take Your Time</h1>
+    <p>
+      You never have to rush your feelings.
+      What matters to me is that you're comfortable
+      being honest with me. ❤️
+    </p>
+    <p>Sending you a little sunshine anyway. ☀️</p>
+  `;
+}
+
+function celebrate() {
+  const emojis = ["❤️", "💛", "🌹", "✨", "💕"];
+
+  for (let i = 0; i < 35; i++) {
+    setTimeout(() => {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.textContent =
+        emojis[Math.floor(Math.random() * emojis.length)];
+
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = (18 + Math.random() * 20) + "px";
+
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 6500);
+    }, i * 100);
+  }
+}
+</script>
+
+</body>
+</html>
